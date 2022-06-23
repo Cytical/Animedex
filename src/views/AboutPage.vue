@@ -1,9 +1,22 @@
 <template>
+    <HeaderComp page='about'/>
     <h1> contact </h1>
     <h2> guiaomikhail@gmail.com </h2>
     <h2> <a href="https://github.com/Cytical"> github </a> </h2>
-    <h2> <a href="https: //www.linkedin.com/in/ezra-guiao/"> linkedin </a> </h2>
+    <h2> <a href="https://www.linkedin.com/in/ezra-guiao"> linkedin </a> </h2>
 </template>
+
+<script>
+import HeaderComp from '../components/HeaderComp.vue';
+
+export default {
+    name: 'AboutPage',
+    components: {
+        HeaderComp,
+    },
+}
+</script>
+
 
 <style scoped>
 

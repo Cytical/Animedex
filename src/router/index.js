@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Homepage from '../views/Homepage.vue'
-import About from '../views/About.vue'
+import AboutPage from '../views/AboutPage.vue'
 
 const routes = [
   {
@@ -11,12 +11,12 @@ const routes = [
 
   {
     path: '/about',
-    name: 'About',
-    component: About
+    name: 'AboutPage',
+    component: AboutPage
   },
 
   {
-    path: '/anime/:category/:id',
+    path: '/anime/:id',
     name: 'Anime',
     props: true,
     component: () => import('../views/AnimeView.vue'),
