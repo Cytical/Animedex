@@ -3,21 +3,47 @@
         <a href="#/" class="logo">
             <img src="../assets/Logo.png">
         </a>
-        <div class="header-right">
-            <a class="active" href="#/">Home</a>
-            <a href="#about">About</a>
+        <div class="header-right" v-if="page == 'home'">
+            <a class="active" href="#/">Home </a>
+            <a class="inactive" href="#about">About</a>
+        </div>
+        <div class="header-right" v-if="page == 'about'">
+            <a class="inactive" href="#/">Home </a>
+            <a class="active" href="#about">About</a>
         </div>
     </div>
 </template>
 
+<script>
+export default {
+    name: 'HeaderComp',
+    props: {
+        page: String,
+        },
+}
+</script>
+
 <style scoped>
+
+
+
+
 * {
     box-sizing: border-box;
 }
-.logo {
-    color: white;
-    margin-top: -10px;
-    margin-bottom: 0px;
+@media (min-width: 1200px) {
+    .logo {
+        margin-top: -10px;
+        margin-bottom: 0px;
+    }
+}
+@media (max-width: 1200px) {
+    .logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+        }
 }
 
 body {
@@ -40,6 +66,7 @@ body {
     font-size: 18px;
     line-height: 25px;
     border-radius: 4px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 
@@ -52,6 +79,11 @@ body {
 .header-right a.active {
     background-color: #E50914;
     color: white;
+    text-align: center;
+}
+
+.header-right a.inactive {
+    text-align: center;
 }
 
 .header-right {

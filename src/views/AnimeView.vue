@@ -1,9 +1,10 @@
 <template>
+    <HeaderComp page='home' />
     <div class="container">
         <div class="title-container">
             <div class="title"> {{ anime.title }} </div>
-            <div class="type"> &nbsp &nbsp {{anime.type}} </div>
-            <div class="date"> &nbsp &nbsp {{anime.season}} {{anime.year}}</div>
+            <div class="type"> &nbsp; &nbsp; {{anime.type}} </div>
+            <div class="date"> &nbsp; &nbsp; {{anime.season}} {{anime.year}}</div>
         </div>
         <div class="image-container">
             <a :href="anime.url">
@@ -46,10 +47,13 @@
 
 
 <script>
+import HeaderComp from '../components/HeaderComp.vue';
 import axios from "axios";
 export default {
+    components: {
+        HeaderComp,
+    },
     props: [
-        'category',
         'id'
     ],
     data() {
@@ -61,29 +65,13 @@ export default {
     async created() {
 
     try {
-        console.log(typeof this.id)
-        var valid_ids;
-        if (this.category == "seasonal") {
-            valid_ids = ["filler", 50265, 40356, 43608, 45613, 50631, 49520, 47194, 41461, 50380, 48760, 50175,]
-        }
-        else if (this.category == "most-popular") {
-            valid_ids = ["filler", 1535, 16498, 11757, 5114, 6547, 1575, 20, 9253, 10620, 4224, 269, 226, 22319, 19815, 121,]
-        }
-        else if (this.category == "top-rated") {
-            valid_ids = ["filler", 5114, 28977, 9253, 38524, 11061, 820, 39486, 42938, 35180, 28851, 37987, 4181, 2904,]
-        }
-        else if (this.category == "recommended") {
-            valid_ids = [];
-        }
-        var anime_id = valid_ids[this.id];
-        console.log(this.category, anime_id);
+        var anime_id = this.id;
         const response = await axios.get('https://api.jikan.moe/v4/anime/' + anime_id);
         this.anime = response.data.data;
         var temp = JSON.stringify(this.anime.images).split("large_image_url")[2];
         var image_url = temp.slice(3, temp.length - 3)
         this.anime.images = image_url
     } catch (err) {
-        //alert("Too many requests please wait...");
         console.error(err);
     }
 }

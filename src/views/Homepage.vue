@@ -1,46 +1,79 @@
 <template>
+  <HeaderComp page='home' />
   <h2> Recommended </h2>
   <hr class="solid">
   <div class="shows">
-    <li v-for='index in 1' :key='index'>
-      <AnimeInfo :number='index' category="recommended" />
-    </li>
-  </div>
-  <h2> This Season </h2>
-  <hr class="solid">
-  <div class="shows">
-    <li v-for='index in 1' :key='index'>
-      <AnimeInfo :number='index' category="seasonal" />
+    <li v-for='index in 10' :key='index'>
+      <AnimeInfo :number='recommended_ids[index]' />
     </li>
   </div>
   <h2> Popular </h2>
   <hr class="solid">
   <div class="shows">
-    <li v-for='index in 1' :key='index'>
-      <AnimeInfo :number='index' category="most-popular" />
+    <li v-for='index in 10' :key='index'>
+      <AnimeInfo :number='popular_ids[index + 1]' />
+    </li>
+  </div>
+  <h2> This Season </h2>
+  <hr class="solid">
+  <div class="shows">
+    <li v-for='index in 8' :key='index'>
+      <AnimeInfo :number='seasonal_ids[index + 1]' />
     </li>
   </div>
   <h2> Top Rated </h2>
   <hr class="solid">
   <div class="shows">
-    <li v-for='index in 1' :key='index'>
-      <AnimeInfo :number='index' category="top-rated" />
+    <li v-for='index in 10' :key='index'>
+      <AnimeInfo :number='toprated_ids[index + 1]' />
     </li>
   </div>
 </template>
 
 <script>
 import AnimeInfo from "../components/AnimeInfo.vue";
+import HeaderComp from '../components/HeaderComp.vue';
+
+//Fisher-Yates Shuffle
+function shuffle(array) {
+  let currentIndex = array.length, randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex != 0) {
+
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
 
 export default {
-    name: 'App',
+    name: 'HomePage',
     components: {
         AnimeInfo,
+        HeaderComp,
+      },
+    data() {
+      return {
+        recommended_ids: shuffle([22319, 19815, 121, 6702, 9919, 3588, 2904, 2167, 2001, 6746,
+          30276, 21881, 8074, 11111, 1735, 20507, 13601, 18679, 21, 22199,
+          1, 5081, 199, 9989, 9756, 30, 10793, 4181, 10087, 6880,]),
+        seasonal_ids: shuffle([50265, 40356, 43608, 45613, 50631, 49520, 47194, 41461, 50380, 48760, 50175,]),
+        popular_ids: shuffle([1535, 16498, 11757, 5114, 6547, 1575, 20, 9253, 10620, 4224, 269, 226, 22319, 19815, 121,]),
+        toprated_ids: shuffle([5114, 28977, 9253, 38524, 11061, 820, 39486, 42938, 35180, 28851, 37987, 4181, 2904,]),
+      }
     }
 }
 </script>
 
 <style scoped>
+
 
 
 h2 {
@@ -53,8 +86,8 @@ h2 {
 }
 
 hr.solid {
-  border-top: 1px solid white;
-  margin-bottom: -16px;
+  border-top: 2px solid white;
+  margin-bottom: -12px;
 }
 .shows {
   display: flex;
@@ -79,5 +112,12 @@ hr.solid {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+@media (max-width: 1200px) {
+  h2 {
+    padding-top: 20px;
+    text-align: center;
+  }
 }
 </style>
