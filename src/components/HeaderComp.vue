@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <a href="#/" class="logo">
-            <img src="../assets/Logo.png">
+            <img src="../assets/logo.png">
         </a>
         <div class="header-right" v-if="page == 'home'">
             <a class="active" href="#/">Home </a>
