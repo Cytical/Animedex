@@ -1,4 +1,7 @@
 # Animedex
+
+https://animeindex.netlify.app/
+
 ## Project setup
 ```
 npm install
