@@ -1,6 +1,8 @@
 # Animedex
 
-https://animeindex.netlify.app/
+https://animeindex.netlify.app/ [![Netlify Status](https://api.netlify.com/api/v1/badges/d4f8a98d-bcd4-48f4-93ce-fba665a9a90c/deploy-status)](https://app.netlify.com/sites/animeindex/deploys)
+
+
 
 ## Project setup
 ```
