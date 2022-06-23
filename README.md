@@ -1,5 +1,4 @@
-# random-anime-generator
-
+# Animedex
 ## Project setup
 ```
 npm install
@@ -22,3 +21,9 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+Features to be added soon:
+1. Machine Learning Recommendation System
+2. Account Registeration
+
+API used: Jikan API
